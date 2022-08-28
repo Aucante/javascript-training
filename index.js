@@ -1,8 +1,13 @@
-function abracadbara() {
-    let nom = prompt('Quel est votre nom ?');
-    let prenom = prompt('Quel est votre prenom ?');
-    let age = prompt('Quel est votre age ?');
-    alert("Sapristi ! On ne m'avait pas prévenu que c'était vous, " + prenom + " ! Euh... Je veux dire... Monsieur le grand magicien " + nom + " ! Cela fait déjà " + age + " ans que vous faites rayonner notre contrée !")
+let taille = prompt('Quel est votre taille en cm?');
+
+taille = taille / 100;
+
+let poids = prompt('Quel est votre poids en kg?');
+
+function getImc(taille, poids) {
+    let result = poids / (taille*taille);
+    
+    return result;
 }
 
-abracadbara();
+alert("Votre IMC est de : " + getImc(taille, poids));
