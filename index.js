@@ -1,18 +1,9 @@
-function timer(secondes) { // 10
-    
-    if(secondes > 0) {
-        console.log(secondes);
-        timer(secondes - 1); // 9
 
-            // afficher 9
-            // timer(8)
-
-                // afficher 8
-                // timer(7)
-
-                    // ...
+function somme(nombre){
+    let result;
+    if(nombre == 1) {
+        return 1;
     }
-
+    return nombre + somme(nombre -1);
 }
-
-timer(10);
+console.log(somme(4));
