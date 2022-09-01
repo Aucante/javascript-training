@@ -1,15 +1,18 @@
-let variableLet = "globale";
-var variableVar = "globale";
+function timer(secondes) { // 10
+    
+    if(secondes > 0) {
+        console.log(secondes);
+        timer(secondes - 1); // 9
 
-if(true) {
-  
-  let variableLet = "locale";
-  var variableVar = "locale";
-  
-  console.log("let : " + variableLet);
-  console.log("var : " + variableVar);
-  
+            // afficher 9
+            // timer(8)
+
+                // afficher 8
+                // timer(7)
+
+                    // ...
+    }
+
 }
 
-console.log("let : " + variableLet);
-console.log("var : " + variableVar);
+timer(10);
