@@ -1,5 +1,3 @@
-let panier = ['fraise', 'banane', 'poire'];
+let pays = ['France', 'Belgique', 'Japon', 'Espagne'];
 
-for (const fruit of panier) {
-    console.log(panier.indexOf(fruit));
-}
+pays.forEach(key => console.log(key));
