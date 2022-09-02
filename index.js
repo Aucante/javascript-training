@@ -1,5 +1,23 @@
-let tab = [
-    ['un', 'deux', 'trois']
-];
+let monTableau = ['un', 'deux', 'trois', 'quatre'];
+console.log(monTableau);
+monTableau.push('cinq');
+console.log(monTableau);
+monTableau.unshift('zero');
+console.log(monTableau);
+// console.log(monTableau);
 
-console.log(tab[0][1]);
+let monTableau2D = [
+    ['Mark', 'Jeff', 'Bill'],
+    ['Zuckerberg', 'Bezos', 'Gates']
+];
+monTableau2D[1].unshift('test');
+// console.log(monTableau2D);
+
+let monTableauAssociatif = {
+    'prenom' : 'Mark',
+    'nom'    : 'Zuckerberg',
+    'poste'  : 'PDG de Facebook'
+};
+
+monTableauAssociatif['nationalite'] = 'Américaine';
+console.log(monTableauAssociatif);
