@@ -1,23 +1,19 @@
-let monTableau = ['un', 'deux', 'trois', 'quatre'];
-console.log(monTableau);
-monTableau.push('cinq');
-console.log(monTableau);
-monTableau.unshift('zero');
-console.log(monTableau);
-// console.log(monTableau);
-
-let monTableau2D = [
-    ['Mark', 'Jeff', 'Bill'],
-    ['Zuckerberg', 'Bezos', 'Gates']
-];
-monTableau2D[1].unshift('test');
-// console.log(monTableau2D);
-
 let monTableauAssociatif = {
-    'prenom' : 'Mark',
-    'nom'    : 'Zuckerberg',
-    'poste'  : 'PDG de Facebook'
+    'prenom'    : 'Mark',
+    'nom'       : 'Zuckerberg',
+    'poste'     : 'PDG de Facebook'
 };
 
-monTableauAssociatif['nationalite'] = 'Américaine';
-console.log(monTableauAssociatif);
+function concatener(tableau) {
+    let chaine = '';
+
+    for (const valeur in tableau) {
+        
+        chaine += (valeur + ' : ' + tableau[valeur] + '\n');
+
+    }
+
+    console.log(chaine);
+}
+
+concatener(monTableauAssociatif);
