@@ -1,5 +1,5 @@
 let panier = ['fraise', 'banane', 'poire'];
 
-for (const fruit in panier) {
-    console.log(panier[fruit]);
+for (const fruit of panier) {
+    console.log(panier.indexOf(fruit));
 }
