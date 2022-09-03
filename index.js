@@ -1,19 +1,16 @@
-let monTableauAssociatif = {
-    'prenom'    : 'Mark',
-    'nom'       : 'Zuckerberg',
-    'poste'     : 'PDG de Facebook'
-};
 
-function concatener(tableau) {
-    let chaine = '';
 
-    for (const valeur in tableau) {
-        
-        chaine += (valeur + ' : ' + tableau[valeur] + '\n');
-
+let secondes = 0;
+function timer() {
+    
+    
+    let maClosure = () => {
+      return ++secondes;
     }
-
-    console.log(chaine);
-}
-
-concatener(monTableauAssociatif);
+    return maClosure;
+  }
+  
+  let monTimer = timer();
+  console.log(monTimer());
+  console.log(monTimer());
+  console.log(monTimer());
