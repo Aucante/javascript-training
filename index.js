@@ -1,16 +1,10 @@
+let chien = {
+    race: 'Shiba',
+    poil: 'Court',
+    // aboyer: function(){
+    //     console.log('Ouaf ouaf');
+    // }
+    aboyer: () => console.log('Ouaf ouaf')
+}
 
-
-let secondes = 0;
-function timer() {
-    
-    
-    let maClosure = () => {
-      return ++secondes;
-    }
-    return maClosure;
-  }
-  
-  let monTimer = timer();
-  console.log(monTimer());
-  console.log(monTimer());
-  console.log(monTimer());
+chien.aboyer();
