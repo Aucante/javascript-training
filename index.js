@@ -10,4 +10,3 @@ let [pseudo, age, sexe] = informations;
 
 console.log(pseudo);
 console.log(age);
-console.log(sexe);
