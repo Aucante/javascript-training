@@ -1,15 +1,11 @@
-let utilisateurs = new Map();
-
-utilisateurs.set('Mark Zuckerberg', {
-    email: 'mark@facebook.com',
-    poste: 'PDG',
-});
-
-utilisateurs.set('Bill Gates', {
-    email: 'bill@gatesnotes.com',
-    poste: 'Sauver le monde',
-});
-
-// utilisateurs.delete('Bill Gates');
-
-console.log(utilisateurs);
+let voitureA = {
+    constructeur: 'Tesla',
+    modele: 'Cybertruck'
+  }
+  let voitureB = {
+    constructeur: 'Renault',
+    modele: 'Espace'
+  }
+  
+  let voitures = new WeakSet([voitureA, voitureB]);
+  console.log(voitures);
