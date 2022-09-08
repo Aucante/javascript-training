@@ -1,15 +1,13 @@
-let voitures = new WeakMap();
+function addition(...nombres) {
 
-let index = {
-    id: 1
+    let resultat = 0;
+
+    nombres.forEach(nombre => {
+        resultat += nombre;
+    });
+
+    console.log(resultat);
+
 }
 
-let voitureA = {
-    constructeur: 'Tesla',
-    modele: 'Cybertruck'
-}
-
-voitures.set(index, voitureA);
-
-// voitures.delete(index);
-console.log(voitures);
+addition(4, 9, 5, 415, 78, 54, 5);
