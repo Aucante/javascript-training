@@ -1,4 +1,1 @@
-let helloWorld = document.createElement('div');
-helloWorld.textContent = "test";
-
-document.body.append(helloWorld);
+document.querySelector('h1').remove();
