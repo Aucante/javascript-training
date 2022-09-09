@@ -1,4 +1,4 @@
-let title = document.querySelector('h1');
-title.textContent = "test";
+let helloWorld = document.createElement('div');
+helloWorld.textContent = "test";
 
-console.log(title);
+document.body.append(helloWorld);
