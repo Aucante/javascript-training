@@ -1,11 +1,7 @@
-let article = document.querySelector('article');
-let h1      = document.querySelector('h1');
+// setTimeout
+let timer = setTimeout("alert('Bonjour')", 3000);
+clearTimeout(timer);
 
-article.addEventListener('click', () => {
-  alert('article cliqué');
-});
-
-h1.addEventListener('click', (e) => {
-  alert('titre cliqué');
-  e.stopPropagation(); // On stop la propagation
-});
+// setInterval
+let interval = setInterval("alert('Bonjour')", 5000);
+clearInterval(interval);
