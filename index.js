@@ -1,23 +1,11 @@
-let a = document.querySelector('a');
-let button = document.querySelector('button');
+let article = document.querySelector('article');
+let h1      = document.querySelector('h1');
 
-a.addEventListener('click', (e) => {
-  if(confirm('Etes-vous sûr ?')) {
-    location.href = "https://believemy.com";
-  }
+article.addEventListener('click', () => {
+  alert('article cliqué');
 });
 
-button.addEventListener('mouseover', () => {
-  document.body.style.backgroundColor = 'orange';
+h1.addEventListener('click', (e) => {
+  alert('titre cliqué');
+  e.stopPropagation(); // On stop la propagation
 });
-
-function backgroundWhite() {
-  document.body.style.backgroundColor = 'white';
-}
-
-button.addEventListener('mouseout', backgroundWhite);
-button.addEventListener('mouseout', () => {
-  document.body.style.fontFamily = 'arial';
-});
-
-button.removeEventListener('mouseout', backgroundWhite);
