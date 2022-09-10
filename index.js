@@ -1,26 +1,23 @@
-let btn = document.querySelector('button');
-let secondes = 10;
-let interval;
+let button = document.createElement('button');
+button.textContent = 'Afficher';
 
-btn.addEventListener('click', start);
+let p = document.createElement('p');
+p.textContent = 'Message';
 
-function start() {
-  interval = setInterval(decompte, 1000);
-}
+document.body.append(button);
 
-function stop() {
-  clearInterval(interval);
-  document.body.innerHTML += "Stop !";
-}
+let hidden = true;
 
-function decompte() {
-  
-  secondes--;
-  if(secondes == 0) {
-    stop();
-  }
-  else {
-    document.body.innerHTML += secondes + '<br>';
-  }
-  
+button.addEventListener('click', afficherMessage);
+
+function afficherMessage() {
+    if(hidden == true) {
+    hidden = false;
+    button.textContent = 'Cacher';
+    document.body.append(p);
+    }else{
+        hidden = true;
+        button.textContent = 'Afficher';
+        p.remove();
+    }
 }
