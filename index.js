@@ -1,22 +1,23 @@
 let a = document.querySelector('a');
 let button = document.querySelector('button');
 
-// a.onclick = function(){
-//   if(confirm('Etes-vous sûr ?')) {
-//     location.href="https://believemy.com"
-//   }
-// }
-
-a.onclick = () => {
+a.addEventListener('click', (e) => {
   if(confirm('Etes-vous sûr ?')) {
-    location.href="https://believemy.com"
+    location.href = "https://believemy.com";
   }
-}
+});
 
-button.onmouseover = () => {
+button.addEventListener('mouseover', () => {
   document.body.style.backgroundColor = 'orange';
-}
+});
 
-button.onmouseout = () => {
+function backgroundWhite() {
   document.body.style.backgroundColor = 'white';
 }
+
+button.addEventListener('mouseout', backgroundWhite);
+button.addEventListener('mouseout', () => {
+  document.body.style.fontFamily = 'arial';
+});
+
+button.removeEventListener('mouseout', backgroundWhite);
