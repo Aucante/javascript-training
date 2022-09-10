@@ -1,7 +1,26 @@
-// setTimeout
-let timer = setTimeout("alert('Bonjour')", 3000);
-clearTimeout(timer);
+let btn = document.querySelector('button');
+let secondes = 10;
+let interval;
 
-// setInterval
-let interval = setInterval("alert('Bonjour')", 5000);
-clearInterval(interval);
+btn.addEventListener('click', start);
+
+function start() {
+  interval = setInterval(decompte, 1000);
+}
+
+function stop() {
+  clearInterval(interval);
+  document.body.innerHTML += "Stop !";
+}
+
+function decompte() {
+  
+  secondes--;
+  if(secondes == 0) {
+    stop();
+  }
+  else {
+    document.body.innerHTML += secondes + '<br>';
+  }
+  
+}
