@@ -9,7 +9,7 @@ let form = document.querySelector('#formulaire');
 error.style.display = "none";
 
 // Etape 3 - Générer un nombre aléatoire
-let nombreAleatoire = Math.floor(Math.random() * 1001);
+let nombreAleatoire = Math.floor(Math.random() * 10);
 let coups = 0;
 let nombreChoisi;
 
@@ -53,6 +53,8 @@ function verifier(nombre) {
   } else {
     instruction.textContent = "#" + coups + " (" + nombre + ") Gagné";
     instruction.className = "instruction fini";
+    input.disabled = true;
+    input.placeholder = "Inutile de rejouer ! Vous avez deja gagné !";
   }
 
   document.querySelector('#instructions').prepend(instruction);
