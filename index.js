@@ -1,61 +1,20 @@
-// Etape 1 - Sélectionner nos éléments
-let input = document.querySelector('#prix');
-
-let error = document.querySelector('small');
-
-let form = document.querySelector('#formulaire');
-
-// Etape 2 - Cacher l'erreur
-error.style.display = "none";
-
-// Etape 3 - Générer un nombre aléatoire
-let nombreAleatoire = Math.floor(Math.random() * 10);
-let coups = 0;
-let nombreChoisi;
-
-// Etape 4 - Vérifier que l'utilisateur donne bien un nombre
-input.addEventListener('keyup', () => {
-  if(isNaN(input.value)) {
-    error.style.display = "inline";
-  } else {
-    error.style.display = "none";
+let mark = {
+  prenom: "Mark", // propriété
+  nom: "Zuckerberg",
+  email: "mark@facebook.com",
+  
+  // À l'ancienne
+  sePresenter: function(){
+    console.log("Bonjour, je m'appelle " + this.prenom);
   }
-});
-
-// Etape 5 - Agir à l'envoi du formulaire
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  if(isNaN(input.value) || input.value == '') {
-    input.style.borderColor = "red";
-  } else {
-    coups++;
-    input.style.borderColor = "silver";
-    nombreChoisi = input.value;
-    input.value = '';
-    verifier(nombreChoisi);
-  }
-});
-
-
-// Etape 6 - Créer la fonction vérifier
-
-function verifier(nombre) {
-  let instruction = document.createElement('div');
-
-  if(nombre < nombreAleatoire) {
-    instruction.textContent = "#" + coups + " (" + nombre + ") C'est plus";
-    instruction.className = "instruction plus";
-
-  } else if(nombre > nombreAleatoire) {
-    instruction.textContent = "#" + coups + " (" + nombre + ") C'est moins";
-    instruction.className = "instruction moins";
-  } else {
-    instruction.textContent = "#" + coups + " (" + nombre + ") Gagné";
-    instruction.className = "instruction fini";
-    input.disabled = true;
-    input.placeholder = "Inutile de rejouer ! Vous avez deja gagné !";
-  }
-
-  document.querySelector('#instructions').prepend(instruction);
 }
+
+mark.sePresenter();
+
+function recevoirLesCoordonnees() {
+  return { latitude: 35, longitude: 139 }
+}
+
+let coordonnees = recevoirLesCoordonnees();
+console.log(coordonnees.latitude);
+console.log(coordonnees.longitude);
