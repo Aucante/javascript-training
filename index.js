@@ -1,22 +1,28 @@
-function Utilisateur(prenom, nom, email) {
-  this.prenom = prenom;
-  this.nom    = nom;
-  this.email  = email;
+// Constructeur de base
+function Animal(nombreDePattes, poids) {
+  this.nombreDePattes = nombreDePattes;
+  this.poids         = poids;
+}
+Animal.prototype.presentation = function() {
+  console.log('Cet animal possède ' + this.nombreDePattes + ' pattes et fait ' + this.poids + '.');
 }
 
-Utilisateur.prototype.sePresenter = function() {
-  console.log("Bonjour, je m'appelle " + this.prenom + " " + this.nom + " et vous pouvez me contacter à l'adresse email " + this.email);
+// Constructeurs spécialisés
+function Oiseau(nombreDePattes, poids, longueurDesAiles) {
+  Animal.call(this, nombreDePattes, poids); // La fonction Call() permet d'appeler une fonction constructeur : en premier paramètre on donne l'objet actuel (this), ensuite, on donne les arguments pour son constructeur 
+  this.longueurDesAiles = longueurDesAiles;
 }
+Oiseau.prototype = Object.create(Animal.prototype); // On change les informations en donnant un nouvel objet qui sera le prototype de notre constructeur animal
+Oiseau.prototype.constructor = Oiseau; // On redéfinit la valeur de Oiseau.prototype.constructor car elle a été changée avec le changement de prototype
 
-// On crée un objet
-var mark = new Utilisateur('Mark', 'Zuckerberg', 'mark@facebook.com');
-var bill = new Utilisateur('Bill', 'Gates', 'bill@gatesnotes.com');
+function Mammifere(nombreDePattes, poids, typeDePoils) {
+  Animal.call(this, nombreDePattes, poids);
+  this.typeDePoils = typeDePoils;
+}
+Mammifere.prototype = Object.create(Animal.prototype);
+Mammifere.prototype.constructor = Mammifere;
 
-console.log(mark);
+var perroquet = new Oiseau(2, '1kg', 'grandes');
+// console.log(perroquet.nombreDePattes);
 
-mark.sePresenter();
-
-var monObjet = new Object();
-monObjet.titre = "Le titre";
-console.log(monObjet);
-
+perroquet.presentation();
