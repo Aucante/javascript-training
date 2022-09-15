@@ -7,7 +7,7 @@ class Utilisateur {
   
   // Un getter (accesseur) permet de récupérer une propriété
   get nomComplet() {
-    return this.prenom + ' ' + this.nom;
+    return this.prenom + ' ' + this.nom + ' ' + this.email;
   }
   
   // Un setter (mutateur) permet de définir une propriété
@@ -24,7 +24,8 @@ var mark = new Utilisateur('Mark', 'Zuckerberg', 'mark@facebook.com');
 console.log(mark.nomComplet);
 mark.nomComplet = "Bill Gates";
 console.log(mark.nomComplet);
-
+mark.nomComplet = "Jean ok";
+console.log(mark.nomComplet);
 // class Animal {
 //   constructor(nombreDePattes, poids) {
 //     this.nombreDePattes = nombreDePattes;
