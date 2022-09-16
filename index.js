@@ -1,54 +1,73 @@
-class Utilisateur {
-  constructor(prenom, nom, email) {
-    this.prenom = prenom;
-    this.nom    = nom;
-    this.email  = email;
+class Personnage {
+  constructor(pseudo, classe, sante, attaque) {
+    this.pseudo  = pseudo;
+    this.classe  = classe;
+    this.sante   = sante;
+    this.attaque = attaque;
+    this.niveau  = 1;
   }
   
-  // Un getter (accesseur) permet de récupérer une propriété
-  get nomComplet() {
-    return this.prenom + ' ' + this.nom + ' ' + this.email;
+  get informations() {
+    return this.pseudo + "(" + this.classe + ")" + " a " + this.sante + " points de vie et est au niveau " + this.niveau + ".";
   }
   
-  // Un setter (mutateur) permet de définir une propriété
-  set nomComplet(valeur) {
-    [this.prenom, this.nom] = valeur.split(' '); // split() divise une chaîne de caractère à partir d'un séparateur pour faire un tableau
+  evoluer() {
+    this.niveau++;
+    console.log(this.pseudo + " passe au niveau " + this.niveau + "!");
   }
-  
-  sePresenter() {
-    console.log("Je m'appelle " + this.prenom + ' ' + this.nom + " et vous pouvez me contacter à l'adresse email " + this.email + ".");
+
+  verifierSante() {
+    if(this.sante <= 0) {
+      this.sante = 0;
+      console.log(this.pseudo + " a perdu !");
+    }
   }
 }
 
-var mark = new Utilisateur('Mark', 'Zuckerberg', 'mark@facebook.com');
-console.log(mark.nomComplet);
-mark.nomComplet = "Bill Gates";
-console.log(mark.nomComplet);
-mark.nomComplet = "Jean ok";
-console.log(mark.nomComplet);
-// class Animal {
-//   constructor(nombreDePattes, poids) {
-//     this.nombreDePattes = nombreDePattes;
-//     this.poids          = poids;
-//   }
+class Magicien extends Personnage {
+  constructor(pseudo) {
+    super(pseudo, "Magicien", 170, 90);
+  }
   
-//   presentation() {
-//     console.log("Cet animal possède " + this.nombreDePattes + " pattes et fait " + this.poids + ".");
-//   }
-// }
+  attaquer(personnage) {
+    personnage.sante -= this.attaque;
+    console.log(this.pseudo + " attaque " + personnage.pseudo + " en lancant un sort(" + this.attaque + " dégâts).");
+    personnage.verifierSante();
+  }
 
-// class Oiseau extends Animal {
-//   constructor(nombreDePattes, poids, longueurDesAiles) {
-//     super(nombreDePattes, poids);
-//     this.longueurDesAiles = longueurDesAiles;
-//   }
+  coupSpecial(personnage) {
+    personnage.sante -= this.attaque * 5;
+    console.log(this.pseudo + " attaque " + personnage.pseudo + " avec un coup spécial(" + this.attaque * 5 + " dégâts).");
+    this.evoluer();
+    personnage.verifierSante();
+  }
+}
+
+class Guerrier extends Personnage {
+  constructor(pseudo) {
+    super(pseudo, "Guerrier", 350, 50);
+  }
   
-//   voler() {
-//     console.log("L'oiseau vole !");
-//   }
-// }
+  attaquer(personnage) {
+    personnage.sante -= this.attaque;
+    console.log(this.pseudo + " attaque " + personnage.pseudo + " en lancant un coup de hache(" + this.attaque + " dégâts).");
+    personnage.verifierSante();
+  }
 
-// var perroquet = new Oiseau(2, "1kg", "grandes");
-// // perroquet.presentation();
-// // perroquet.voler();
-// console.log(perroquet);
+  coupSpecial(personnage) {
+    personnage.sante -= this.attaque * 5;
+    console.log(this.pseudo + " attaque " + personnage.pseudo + " avec un coup spécial(" + this.attaque * 5 + " dégâts).");
+    this.evoluer();
+    personnage.verifierSante();
+  }
+}
+
+var gandalf = new Magicien('Gandalf');
+var thor    = new Guerrier('Thor');
+console.log(thor.informations);
+console.log(gandalf.informations);
+gandalf.attaquer(thor);
+console.log(thor.informations);
+thor.attaquer(gandalf);
+console.log(gandalf.informations);
+gandalf.coupSpecial(thor);
