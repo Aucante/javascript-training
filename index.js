@@ -1,19 +1,20 @@
-// Avant
-// let prenom = "John";
-// let bonjour = "Bonjour " + prenom;
-// console.log(bonjour);
+const url = 'https://lesoublisdelinfo.com/api.php';
 
-// Maintenant
-// let prenom = "John";
-// let bonjour = `Bonjour ${prenom}`;
-// console.log(bonjour);
+let requete = new XMLHttpRequest();
+requete.open('POST', url);
+requete.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+requete.responseType = 'json';
+requete.send('prenom=John');
 
-// Avec les dates
-// let date = new Date().getFullYear();
-// let copyright = `${date} © Believemy`;
-// console.log(copyright);
-
-// Ou encore plus pratique : des calculs
-let aliments = { fruits: 5, legumes: 1, biscuits: 75 }
-let panier = `Dans votre panier, vous avez ${aliments.fruits + aliments.legumes + aliments.biscuits} articles.`;
-console.log(panier);
+requete.onload = function() {
+    if (requete.readyState === XMLHttpRequest.DONE) {
+        if (requete.status === 200) {
+            let reponse = requete.response;
+            console.log(reponse);
+        }
+        else
+        {
+            alert('problème');
+        }
+    }
+}
