@@ -1,19 +1,26 @@
-// Avant
-// let prenom = "John";
-// let bonjour = "Bonjour " + prenom;
-// console.log(bonjour);
+const url = 'https://blockchain.info/ticker';
 
-// Maintenant
-// let prenom = "John";
-// let bonjour = `Bonjour ${prenom}`;
-// console.log(bonjour);
+function recupPrix() {
+    let requete = new XMLHttpRequest();
+    requete.open('GET', url);
+    requete.responseType = 'json';
+    requete.send();
 
-// Avec les dates
-// let date = new Date().getFullYear();
-// let copyright = `${date} © Believemy`;
-// console.log(copyright);
+    requete.onload = function() {
+        if (requete.readyState === XMLHttpRequest.DONE) {
+            if (requete.status === 200) {
+                let reponse = requete.response;
+                let prixEuros = reponse.EUR.last;
+                document.querySelector('#price_label').textContent = prixEuros;
+            }
+            else
+            {
+                alert("problème");
+            }
+        }
+    }
+    console.log('Prix actualisé');
+}
 
-// Ou encore plus pratique : des calculs
-let aliments = { fruits: 5, legumes: 1, biscuits: 75 }
-let panier = `Dans votre panier, vous avez ${aliments.fruits + aliments.legumes + aliments.biscuits} articles.`;
-console.log(panier);
+setInterval(recupPrix, 1000);
+
