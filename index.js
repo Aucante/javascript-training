@@ -1,13 +1,19 @@
-let dateActuelle = new Date();
+// Avant
+// let prenom = "John";
+// let bonjour = "Bonjour " + prenom;
+// console.log(bonjour);
 
-let dateLocale = dateActuelle.toLocaleString('fr-FR', {
-  weekday: 'long', // short (3 premières lettres), narrow (première lettre), long (toutes les lettres)
-  year: 'numeric', // numeric (xxxx), 2-digit (xx)
-  month: 'long', // short, narrow, long, numeric
-  day: 'numeric', // numeric, 2-digit
-  hour: 'numeric', // ...
-  minute: 'numeric',
-  second: 'numeric'
-});
+// Maintenant
+// let prenom = "John";
+// let bonjour = `Bonjour ${prenom}`;
+// console.log(bonjour);
 
-console.log(dateLocale);
+// Avec les dates
+// let date = new Date().getFullYear();
+// let copyright = `${date} © Believemy`;
+// console.log(copyright);
+
+// Ou encore plus pratique : des calculs
+let aliments = { fruits: 5, legumes: 1, biscuits: 75 }
+let panier = `Dans votre panier, vous avez ${aliments.fruits + aliments.legumes + aliments.biscuits} articles.`;
+console.log(panier);
