@@ -1,10 +1,13 @@
 let dateActuelle = new Date();
 
-console.log(dateActuelle.getFullYear());
-console.log(dateActuelle.getDay());
-console.log(dateActuelle.getDate());
-console.log(dateActuelle.getUTCDate());
+let dateLocale = dateActuelle.toLocaleString('fr-FR', {
+  weekday: 'long', // short (3 premières lettres), narrow (première lettre), long (toutes les lettres)
+  year: 'numeric', // numeric (xxxx), 2-digit (xx)
+  month: 'long', // short, narrow, long, numeric
+  day: 'numeric', // numeric, 2-digit
+  hour: 'numeric', // ...
+  minute: 'numeric',
+  second: 'numeric'
+});
 
-dateActuelle.setFullYear(2700);
-
-console.log(dateActuelle.getFullYear());
+console.log(dateLocale);
