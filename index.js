@@ -1,6 +1,2 @@
-let dateActuelle = Date();
-
-let dateEnSecondes = Date.now();
-
-
-console.log(dateEnSecondes);
+let datePrecise = new Date(2022, 07, 17, 12, 01);
+console.log(datePrecise);
