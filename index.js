@@ -36,6 +36,5 @@ function chargerScript(script) {
   
   // promesse.then(result => console.log(result), error => console.log(error)); // Même code, avec des fonctions fléchées
   
-  // On peut aussi passer directement par la fonction elle-même
   chargerScript('test.js')
   .catch(console.log);
