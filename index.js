@@ -1,32 +1,43 @@
-let ville = "Paris";
-recevoirTemperature(ville);
+// Async et Await sont ce qu'on appelle des "sucres syntaxiques" : ils n'apportent pas de nouvelles fonctionnalités, mais permettent d'utiliser les promesses de façon plus intuitives.
 
-let changerVille = document.querySelector('#changer').addEventListener('click', () => {
-    ville = prompt('Quelle ville souhaitez vous?');
-    recevoirTemperature(ville);
-});
+// On place 'async' devant une fonction pour la forcer à retourner une promesse, et pouvoir utiliser 'await' dans celle-ci.
 
-function recevoirTemperature(ville) {
+// Si on place le mot-clé 'await' devant une promesse, JavaScript est obligé d'attendre que celle-ci soit terminée. Si elle est rompue, alors, il génèrera une exception. Nous ne somme ainsi plus obligés d'utiliser then() et catch().
 
-    const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=dc8c9152e8adaad0ec8bf635818c0d42&units=metric';
+// async function direBonjour() {
+  
+//   const promesse = new Promise((resolve, reject) => {
+//     setTimeout(() => resolve('Promesse honorée !'), 1500)
+//   });
+  
+//   let resultat = await promesse; // On attend que la promesse soit honorée ou rejetée, un peu comme then(), mais de façon plus intuitive
+//   console.log(resultat);
+// }
 
-    let requete = new XMLHttpRequest();
-    requete.open('GET', url);
-    requete.responseType = 'json';
-    requete.send('prenom=John');
-    
-    requete.onload = function() {
-        if (requete.readyState === XMLHttpRequest.DONE) {
-            if (requete.status === 200) {
-                let reponse = requete.response;
-                document.querySelector('#temperature_label').textContent = reponse.main.temp;
-                document.querySelector('#ville').textContent = reponse.name;
-            }
-            else
-            {
-                alert('problème');
-            }
-        }
-    }
+// direBonjour();
+// console.log('une autre tâche');
+
+function chargerScript(script) {
+  return new Promise((resolve, reject) => {
+    let element = document.createElement('script');
+    element.src = script;
+    document.head.append(element);
+    element.onload = () => resolve('Fichier ' + script + ' chargé');
+    element.onerror = () => reject(new Error('Operation impossible pour le script ' + script));
+  });
 }
 
+async function resultat(){
+  try {
+    const scriptA = await chargerScript('test.js');
+    console.log(scriptA);
+    const scriptB = await chargerScript('autre.js');
+    console.log(scriptB);
+  }
+  catch(error) {
+    console.log(error);
+    // document.head.lastChild.remove();
+  }
+}
+
+resultat();
