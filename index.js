@@ -1,23 +1,15 @@
-const url = 'https://lesoublisdelinfo.com/api.php';
+const url = 'https://blockchain.info/ticker';
 
 
-async function envoyerPrenom(prenom) {
-  const requete = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-      prenom: prenom
+async function recupererPrix() {
+  axios.get(url)
+    .then(function(donnees) {
+      // console.log(donnees);
+      document.querySelector('span').textContent = donnees.data.EUR.last;
     })
-  });
-  
-  if(!requete.ok) {
-    alert('Un problème est survenu.');
-  } else {
-    let donnees = await requete.json();
-    console.log(donnees);
-  }
+    .catch(function(erreur) {
+      console.log(erreur);
+    });
 }
 
-envoyerPrenom('elon');
+recupererPrix();
