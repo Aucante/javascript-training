@@ -1,18 +1,24 @@
-const url = 'https://lesoublisdelinfo.com/api.php';
+// Créer un cookie
+document.cookie = 'prenom=John';
 
-const axiosInstancePost = axios.create({
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  baseURL: 'https://lesoublisdelinfo.com/'
-});
+// Afficher tous les cookies
+// alert(document.cookie);
 
-axiosInstancePost.post('api.php', new URLSearchParams({
-  prenom: 'Steve'
-}))
-  .then(function(donnees) {
-      console.log(donnees.data);
-  })
-  .catch(function(erreur) {
-    console.log(erreur);
-  })
+// Modifier un cookie
+document.cookie = 'prenom=Mark';
+
+// Supprimer un cookie
+document.cookie = 'prenom=';
+
+// Options
+
+document.cookie = 'prenom=John; path=/admin';
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com';
+
+let date = new Date(Date.now() + 31536000000);
+date = date.toUTCString();
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com; expires=' + date;
+
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com; max-age=31536000000';
+
+document.cookie = 'prenom=John; path=/admin; domain=believemy.com; max-age=31536000000; secure';
