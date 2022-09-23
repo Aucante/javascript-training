@@ -1,18 +1,19 @@
-const url = 'https://lesoublisdelinfo.com/api.php';
+// LocalStorage = Stocké dans le navigateur même après qu'il soit fermé
+// SessionStorage = Stocké dans le navigateur pendant la session
 
-const axiosInstancePost = axios.create({
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  baseURL: 'https://lesoublisdelinfo.com/'
-});
+// Et les cookies ?
 
-axiosInstancePost.post('api.php', new URLSearchParams({
-  prenom: 'Steve'
-}))
-  .then(function(donnees) {
-      console.log(donnees.data);
-  })
-  .catch(function(erreur) {
-    console.log(erreur);
-  })
+// setItem[clé], [valeur]) / getItem[clé] / removeItem[clé]
+// clear() : supprimer tout
+// key([index]) : obtenir la clef située à l'index donnée
+// length : obtenir le nombre d'éléments stockés
+
+if(localStorage.getItem('prenom')) {
+  document.body.append('Bonjour ' + localStorage.getItem('prenom'));
+}
+else {
+  let prenom = prompt('Quel est votre prénom ?');
+  localStorage.setItem('prenom', prenom);
+  document.body.append('Bonjour ' + prenom);
+}
+// localStorage.clear();
