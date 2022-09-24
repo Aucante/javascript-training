@@ -1,19 +1,26 @@
-// LocalStorage = Stocké dans le navigateur même après qu'il soit fermé
-// SessionStorage = Stocké dans le navigateur pendant la session
+let bouton = document.querySelector('#mode');
+let span = document.querySelector('span');
+let body = document.querySelector('body');
 
-// Et les cookies ?
+if (localStorage.getItem('theme')) {
+  if(localStorage.getItem('theme') == 'sombre') {
+    modeSombre();
+  }
+} 
+  bouton.addEventListener('click', () => {
+    if (body.classList.contains('dark')) {
+      body.classList.remove('dark');
+      span.innerHTML = 'Thème sombre';
+      localStorage.setItem('theme', 'clair');
+    } else {
+      modeSombre();
+    }
+  });
+  
+  function modeSombre() {
+    body.classList.add('dark');
+    span.innerHTML = 'Thème clair';
+    localStorage.setItem('theme', 'sombre');
+  }
 
-// setItem[clé], [valeur]) / getItem[clé] / removeItem[clé]
-// clear() : supprimer tout
-// key([index]) : obtenir la clef située à l'index donnée
-// length : obtenir le nombre d'éléments stockés
 
-if(localStorage.getItem('prenom')) {
-  document.body.append('Bonjour ' + localStorage.getItem('prenom'));
-}
-else {
-  let prenom = prompt('Quel est votre prénom ?');
-  localStorage.setItem('prenom', prenom);
-  document.body.append('Bonjour ' + prenom);
-}
-// localStorage.clear();
