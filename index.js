@@ -1,33 +1,14 @@
-// Pour géolocaliser on utilise l'objet geolocation
+// Attention : impossible d'utiliser les modules si vous n'avez pas de serveur, la plupart des navigateurs bloquent les modules pour notre sécurité s'ils ne sont pas executés sur des serveurs
 
-// Vérifier que la geolocation soit disponible
-if ('geolocation' in navigator) {
-  
-  // Obtenir la position avec getCurrentPosition() ou watchPosition()
-  
-  // (success, error (optionnel), options (optionnel))
-  
-  navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
-  }, error, options);
-  
-  function error() {
-    alert('Aucune position disponible.');
-  }
-  
-  var options = {
-    enableHighAccuracy: true,  // false par defaut
-    maximumAge        : 30000, // derniere position en cache en millisecondes qu'on peut accepter, 0 par defaut
-    timeout           : 27000  // duree max en millisecondes pour geolocaliser, infinity par defaut
-  }
-  
-  /*
-  let watch = navigator.geolocation.watchPosition() ...
-  navigator.geolocation.clearWatch(watch)
-  */
-  
+// modules/direBonjour.js
+export direBonjour(prenom) {
+  console.log('Bonjour ' + prenom);
 }
-else {
-  alert('Le navigateur ne supporte pas la geolocalisation');
-}
+
+// index.js
+import { direBonjour } from './modules/direBonjour.js';
+
+direBonjour('John'); // affiche 'Bonjour John'
+
+// index.html
+<script type="module" src="index.js"></script>
