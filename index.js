@@ -26,13 +26,17 @@ if ('geolocation' in navigator) {
       }
     }
   }
-  }, erreur);
+  }, erreur, options);
 }
 else 
 {
   villeChoisie = "Mexico";
   recevoirTemperature(villeChoisie);
 }
+
+var options = {
+  enableHighAccurency: true
+};
 
 let changerDeVille = document.querySelector('#changer');
 changerDeVille.addEventListener('click', () => {
