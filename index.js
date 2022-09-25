@@ -1,14 +1,19 @@
-// Attention : impossible d'utiliser les modules si vous n'avez pas de serveur, la plupart des navigateurs bloquent les modules pour notre sécurité s'ils ne sont pas executés sur des serveurs
+// Le mode strict : début
+// "use strict";
 
-// modules/direBonjour.js
-export direBonjour(prenom) {
-  console.log('Bonjour ' + prenom);
+prenom = "John";
+console.log(prenom);
+
+direBonjour();
+addition(7, 1);
+
+function direBonjour() {
+  // "use strict";
+  nom = "Doe";
+  console.log(nom);
 }
 
-// index.js
-import { direBonjour } from './modules/direBonjour.js';
-
-direBonjour('John'); // affiche 'Bonjour John'
-
-// index.html
-<script type="module" src="index.js"></script>
+function addition(nombreA, nombreA) {
+  "use strict";
+  console.log(nombreA + nombreA);
+}
