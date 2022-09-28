@@ -1,26 +1,23 @@
-let btn = document.querySelector('button');
-let secondes = 10;
-let interval;
+// Sélectionner nos éléments
+let btn       = document.querySelector('button');
+let div       = document.querySelector('div');
+let hidden    = true;
 
-btn.addEventListener('click', start);
+// Cacher le message
+div.style.display = "none";
 
-function start() {
-  interval = setInterval(decompte, 1000);
-}
-
-function stop() {
-  clearInterval(interval);
-  document.body.innerHTML += "Stop !";
-}
-
-function decompte() {
+// Détecter le clic
+btn.addEventListener('click', () => {
   
-  secondes--;
-  if(secondes == 0) {
-    stop();
+  if(hidden) {
+    btn.textContent = "Cacher";
+    div.style.display = "block";
+    hidden = false;
   }
   else {
-    document.body.innerHTML += secondes + '<br>';
+    btn.textContent = "Afficher";
+    div.style.display = "none";
+    hidden = true;
   }
   
-}
+});
