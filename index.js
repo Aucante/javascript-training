@@ -1,15 +1,13 @@
-let utilisateurs = new Map();
+function addition(...nombres) {
 
-utilisateurs.set('Mark Zuckerberg', {
-    email: 'mark@facebook.com',
-    poste: 'PDG',
-});
+  let resultat = 0;
 
-utilisateurs.set('Bill Gates', {
-    email: 'bill@gatesnotes.com',
-    poste: 'Sauver le monde',
-});
+  nombres.forEach(nombre => {
+      resultat += nombre;
+  });
 
-// utilisateurs.delete('Bill Gates');
+  console.log(resultat);
 
-console.log(utilisateurs);
+}
+
+addition(4, 9, 78, 54, 5);
