@@ -1,24 +1,24 @@
-// Exemple 1 : fusionner plusieurs tableaux
-let fruits = ['fraise', 'banane', 'poire'];
-let aliments = ['chocolat', 'sucre', 'lait', ...fruits];
+document.querySelector('#a-supprimer').remove();
 
-// console.log(aliments);
+// Créer les éléments
+let header = document.createElement('header');
+let menu   = document.createElement('div');
+let p      = document.createElement('p');
 
-// Exemple 2 : découper une chaîne de caractères en plusieurs éléments
-let phrase = "Bonjour !";
-let phraseTableau = [...phrase];
+// Les personnaliser
+header.textContent = "Bienvenue";
+header.style.backgroundColor = "#e3b04b";
+header.style.color = "white";
+header.style.padding = "30px";
+header.style.fontSize = "3em";
+header.style.textAlign = "center";
 
-// console.log(phraseTableau);
+menu.innerHTML = "<a href='#'>Accueil</a> / <a href='#'>Une autre page</a>";
+menu.style.backgroundColor = "#f1d6ab";
+menu.style.padding = "15px";
 
-// Exemple 3 : sélectionner un élément, et stocker les autres dans une variable
-let devises = ['dollars', 'euro', 'yen'];
+p.textContent = "Ceci est un paragraphe créé avec JavaScript !";
+p.style.margin = "15px";
 
-// Sans décomposition
-// let premiereDevise = devises[0];
-// let autres = [devises[1], devises[2]];
-
-// Avec décomposition
-let [premiereDevise, ...autres] = devises;
-
-console.log(premiereDevise);
-console.log(autres);
+// Les ajouter
+document.body.append(header, menu, p);
