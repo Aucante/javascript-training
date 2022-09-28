@@ -1,24 +1,26 @@
-document.querySelector('#a-supprimer').remove();
+let btn = document.querySelector('button');
+let secondes = 10;
+let interval;
 
-// Créer les éléments
-let header = document.createElement('header');
-let menu   = document.createElement('div');
-let p      = document.createElement('p');
+btn.addEventListener('click', start);
 
-// Les personnaliser
-header.textContent = "Bienvenue";
-header.style.backgroundColor = "#e3b04b";
-header.style.color = "white";
-header.style.padding = "30px";
-header.style.fontSize = "3em";
-header.style.textAlign = "center";
+function start() {
+  interval = setInterval(decompte, 1000);
+}
 
-menu.innerHTML = "<a href='#'>Accueil</a> / <a href='#'>Une autre page</a>";
-menu.style.backgroundColor = "#f1d6ab";
-menu.style.padding = "15px";
+function stop() {
+  clearInterval(interval);
+  document.body.innerHTML += "Stop !";
+}
 
-p.textContent = "Ceci est un paragraphe créé avec JavaScript !";
-p.style.margin = "15px";
-
-// Les ajouter
-document.body.append(header, menu, p);
+function decompte() {
+  
+  secondes--;
+  if(secondes == 0) {
+    stop();
+  }
+  else {
+    document.body.innerHTML += secondes + '<br>';
+  }
+  
+}
