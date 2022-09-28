@@ -1,16 +1,13 @@
-function somme(nombre) { // 3
-    
-  if(nombre == 1) {
-      return 1;
-  }
+let informations = ['superSayen', '25', 'homme'];
 
-  return nombre + somme(nombre - 1); // 2
+// Sans décomposition
+// let pseudo = informations[0];
+// let age    = informations[1];
+// let sexe   = informations[2];
 
-      // retourner 2 + somme(1)
+// Avec décomposition
+let [pseudo, age, sexe] = informations;
 
-          // retourner 1
-
-  // 3 + 2 + 1
-}
-
-console.log(somme(5));
+console.log(pseudo);
+console.log(age);
+console.log(sexe);
